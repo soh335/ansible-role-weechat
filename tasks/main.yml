@@ -1,0 +1,16 @@
+---
+# https://launchpad.net/~nesthib/+archive/ubuntu/weechat-stable
+
+- name: add apt repository ppa:nesthib/weechat-stable
+  apt_repository: repo=ppa:nesthib/weechat-stable state=present
+  register: add_weechat_apt_repository
+  sudo: yes
+
+- name: apt-get update
+  apt: update_cache=yes
+  when: add_weechat_apt_repository.changed
+  sudo: yes
+
+- name: install weechat
+  apt: name="weechat=1.1.1~stable+20150128-{{ ansible_distribution_release }}1" state=present
+  sudo: yes
