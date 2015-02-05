@@ -12,5 +12,5 @@
   sudo: yes
 
 - name: install weechat
-  apt: name="weechat=1.1.1~stable+20150128-{{ ansible_distribution_release }}1" state=present
+  apt: name="weechat=1.1.1~stable+20150128~{{ ansible_distribution_release }}1" state=present
   sudo: yes
